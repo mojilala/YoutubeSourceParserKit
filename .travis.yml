@@ -1,0 +1,4 @@
+language: swift
+osx_image: xcode61
+script:
+  - xctool -project youtube-parser.xcodeproj -scheme youtube-parser build
