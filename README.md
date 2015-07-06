@@ -31,15 +31,14 @@ import youtube_parser
 
 ```swift
 let testURL = NSURL(string: "https://www.youtube.com/watch?v=ngElkyQ6Rhs")!
-    Youtube.h264videosWithYoutubeURL(testURL,
-      completion: { (videoInfo, error) -> Void in
-        if let
-          videoURLString = videoInfo?["url"] as? String,
-          videoTitle = videoInfo?["title"] as? String {
+Youtube.h264videosWithYoutubeURL(testURL, completion: { (videoInfo, error) -> Void in
+    if let
+        videoURLString = videoInfo?["url"] as? String,
+        videoTitle = videoInfo?["title"] as? String {
             println("\(videoTitle)")
             println("\(videoURLString)")
         }
-    })
+})
 ```
 
 ```
