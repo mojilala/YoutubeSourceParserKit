@@ -11,9 +11,10 @@ __Requires iOS 7 or later and Xcode 6.1+__
 
 ###[Cocoapods](https://github.com/CocoaPods/CocoaPods)
 
-Add the following line in your `Podfile`.
+To install via CocoaPods add this line to your `Podfile`.
 
 ```
+use_frameworks!
 pod "youtube-parser"
 ```
 
