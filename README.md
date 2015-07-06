@@ -15,10 +15,19 @@ To install via CocoaPods add this line to your `Podfile`.
 
 ```
 use_frameworks!
+
 pod "youtube-parser"
 ```
 
-##Basic Tutorial
+Then, run the following command:
+
+```$ pod install```
+
+##Usage
+
+```swift
+import youtube_parser
+```
 
 ```swift
 let testURL = NSURL(string: "https://www.youtube.com/watch?v=ngElkyQ6Rhs")!
@@ -31,4 +40,18 @@ let testURL = NSURL(string: "https://www.youtube.com/watch?v=ngElkyQ6Rhs")!
             println("\(videoURLString)")
         }
     })
+```
+
+```
+videoInfo output: 
+```
+```json
+{
+    "title": "[Video Title]",
+    "isStream": 0,
+    "quality": "hd720",
+    "itag": 22,
+    "fallback_host": "tc.v20.cache2.googlevideo.com",
+    "url": "http://[Source URL]"
+}
 ```
