@@ -1,0 +1,4 @@
+language: objective-c
+osx_image: xcode61
+xcodebuild: xctool -project youtube-parser.xcodeproj -scheme youtube-parser build
+xcode_scheme: youtube-parserTests
