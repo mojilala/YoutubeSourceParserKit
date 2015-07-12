@@ -54,3 +54,34 @@ videoInfo output:
     "url": "http://[Source URL]"
 }
 ```
+
+##MPMoviePlayerController Usage
+```swift
+import UIKit
+import youtube_parser
+import MediaPlayer
+
+class ViewController: UIViewController {
+
+  let moviePlayer = MPMoviePlayerController()
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    moviePlayer.view.frame = view.frame
+    view.addSubview(moviePlayer.view)
+    moviePlayer.fullscreen = true
+    let youtubeURL = NSURL(string: "https://www.youtube.com/watch?v=ngElkyQ6Rhs")!
+    playVideoWithYoutubeURL(youtubeURL)
+  }
+
+  func playVideoWithYoutubeURL(url: NSURL) {
+    Youtube.h264videosWithYoutubeURL(url, completion: { (videoInfo, error) -> Void in
+      if let
+        videoURLString = videoInfo?["url"] as? String,
+        videoTitle = videoInfo?["title"] as? String {
+          self.moviePlayer.contentURL = NSURL(string: videoURLString)
+      }
+    })
+  }
+}
+```
