@@ -56,6 +56,9 @@ videoInfo output:
 ```
 
 ##MPMoviePlayerController Usage
+
+![alt tag](http://s10.postimg.org/5j1mristl/i_OS_Simulator_Screen_Shot_Jul_12_2015_14_33_02.png)
+
 ```swift
 import UIKit
 import youtube_parser
