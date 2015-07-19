@@ -19,15 +19,6 @@ class youtube_parserTests: XCTestCase {
     override func tearDown() {
         super.tearDown()
     }
-    
-    func testExample() {
-        XCTAssert(true, "Pass")
-    }
-    
-    func testPerformanceExample() {
-        self.measureBlock() {
-        }
-    }
 
   func testStringByDecodingURLFormat() {
     let originalString = "https://www.youtube.com/watch?v=XUFpdwbfqqQ+XUFpdwbfqqQ"
@@ -128,7 +119,6 @@ class youtube_parserTests: XCTestCase {
     }
   }
 
-
   func testIsLiveVideoTest() {
     if let liveVideoURL = NSURL(string: "https://www.youtube.com/watch?v=rxGoGg7n77A"){
       Youtube.h264videosWithYoutubeURL(liveVideoURL, completion: { (videoInfo, error) -> Void in
@@ -139,4 +129,29 @@ class youtube_parserTests: XCTestCase {
       })
     }
   }
+
+  func testInfoUrl(){
+    XCTAssertEqual(Youtube.infoURL, "http://www.youtube.com/get_video_info?video_id=", "Info url not correct!")
+  }
+
+  func testUserAgent() {
+     XCTAssertEqual(Youtube.userAgent, "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4", "User Agent not correct!")
+  }
+
+  func testH264videosWithYoutubeURLBlock(){
+    let expectation: XCTestExpectation = self.expectationWithDescription("Handler called")
+    if let videoURL = NSURL(string: "http://www.youtube.com/watch?v=1hZ98an9wjo") {
+      Youtube.h264videosWithYoutubeURL(videoURL, completion: { (videoInfo, error) -> Void in
+        expectation.fulfill()
+        if let info = videoInfo as [String:AnyObject]? {
+          if let quality = info["itag"] as? String {
+            XCTAssertEqual(quality, "22", "itag not equal")
+          }
+        }
+      })
+      self.waitForExpectationsWithTimeout(2, handler: nil)
+    }
+
+  }
+  
 }

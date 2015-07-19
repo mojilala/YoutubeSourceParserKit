@@ -9,7 +9,6 @@
 import UIKit
 
 public extension NSURL {
-
   /**
   Parses a query string of an NSURL
 
@@ -21,7 +20,6 @@ public extension NSURL {
 }
 
 public extension NSString {
-
   /**
   Convenient method for decoding a html encoded string
   */
@@ -52,10 +50,7 @@ public extension NSString {
 
 public class Youtube: NSObject {
   static let infoURL = "http://www.youtube.com/get_video_info?video_id="
-  static var userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2)"
-    + " AppleWebKit/537.4 (KHTML, like Gecko)"
-    + " Chrome/22.0.1229.79 Safari/537.4"
-
+  static var userAgent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.79 Safari/537.4"
   /**
   Method for retrieving the youtube ID from a youtube URL
 
@@ -82,7 +77,6 @@ public class Youtube: NSObject {
     }
     return nil
   }
-
   /**
   Method for retreiving a iOS supported video link
 
@@ -145,7 +139,6 @@ public class Youtube: NSObject {
     }
     return nil
   }
-
   /**
   Block based method for retreiving a iOS supported video link
 
@@ -153,24 +146,13 @@ public class Youtube: NSObject {
   @param completeBlock the block which is called on completion
 
   */
-  public static func h264videosWithYoutubeURL(
-    youtubeURL: NSURL,
-    completion: ((
-    videoInfo: [String: AnyObject]?,
-    error: NSError?) -> Void)?
-    ) {
+  public static func h264videosWithYoutubeURL(youtubeURL: NSURL,completion: ((
+    videoInfo: [String: AnyObject]?, error: NSError?) -> Void)?) {
       let youtubeID = youtubeIDFromYoutubeURL(youtubeURL)
-      if let
-        youtubeID = youtubeIDFromYoutubeURL(youtubeURL),
-        videoInformation = h264videosWithYoutubeID(youtubeID) {
+      if let youtubeID = youtubeIDFromYoutubeURL(youtubeURL), videoInformation = h264videosWithYoutubeID(youtubeID) {
           completion?(videoInfo: videoInformation, error: nil)
       } else {
-        completion?(
-          videoInfo: nil,
-          error: NSError(
-            domain: "com.player.yt.backgroundqueue",
-            code: 1001,
-            userInfo: ["error": "Invalid YouTube URL"]))
+        completion?(videoInfo: nil, error: NSError(domain: "com.player.yt.backgroundqueue", code: 1001, userInfo: ["error": "Invalid YouTube URL"]))
       }
   }
 }
