@@ -10,6 +10,11 @@ import UIKit
 
 public extension NSURL {
 
+  /**
+  Parses a query string of an NSURL
+
+  @return key value dictionary with each parameter as an array
+  */
   func dictionaryForQueryString() -> [String: AnyObject]? {
     return self.query?.dictionaryFromQueryStringComponents()
   }
@@ -17,11 +22,19 @@ public extension NSURL {
 
 public extension NSString {
 
+  /**
+  Convenient method for decoding a html encoded string
+  */
   func stringByDecodingURLFormat() -> String {
     var result = self.stringByReplacingOccurrencesOfString("+", withString:" ")
     return result.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
   }
 
+  /**
+  Parses a query string
+
+  @return key value dictionary with each parameter as an array
+  */
   func dictionaryFromQueryStringComponents() -> [String: AnyObject] {
     var parameters = [String: AnyObject]()
     for keyValue in componentsSeparatedByString("&") {
@@ -43,6 +56,12 @@ public class Youtube: NSObject {
     + " AppleWebKit/537.4 (KHTML, like Gecko)"
     + " Chrome/22.0.1229.79 Safari/537.4"
 
+  /**
+  Method for retrieving the youtube ID from a youtube URL
+
+  @param youtubeURL the the complete youtube video url, either youtu.be or youtube.com
+  @return string with desired youtube id
+  */
   public static func youtubeIDFromYoutubeURL(youtubeURL: NSURL) -> String? {
     if let
       youtubeHost = youtubeURL.host,
@@ -64,6 +83,13 @@ public class Youtube: NSObject {
     return nil
   }
 
+  /**
+  Method for retreiving a iOS supported video link
+
+  @param youtubeURL the the complete youtube video url
+  @return dictionary with the available formats for the selected video
+  
+  */
   public static func h264videosWithYoutubeID(youtubeID: String) -> [String: AnyObject]? {
     if count(youtubeID) > 0 {
       let urlString = String(format: "%@%@", infoURL, youtubeID) as String
@@ -120,6 +146,13 @@ public class Youtube: NSObject {
     return nil
   }
 
+  /**
+  Block based method for retreiving a iOS supported video link
+
+  @param youtubeURL the the complete youtube video url
+  @param completeBlock the block which is called on completion
+
+  */
   public static func h264videosWithYoutubeURL(
     youtubeURL: NSURL,
     completion: ((
