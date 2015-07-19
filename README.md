@@ -1,5 +1,5 @@
 # youtube-parser
-[![Build Status](https://travis-ci.org/toygard/youtube-parser.svg?branch=master)](https://travis-ci.org/toygard/youtube-parser) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/isair/JSONHelper?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) ![Gitter](https://img.shields.io/badge/license-MIT-blue.svg) ![Gitter](https://img.shields.io/github/issues/toygard/youtube-parser.svg) ![Gitter](https://img.shields.io/badge/platform-iOS-brightgreen.svg)
+[![Build Status](https://travis-ci.org/toygard/youtube-parser.svg?branch=master)](https://travis-ci.org/toygard/youtube-parser) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/toygard/youtube-parser?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) ![Gitter](https://img.shields.io/badge/license-MIT-blue.svg) ![Gitter](https://img.shields.io/github/issues/toygard/youtube-parser.svg) ![Gitter](https://img.shields.io/badge/platform-iOS-brightgreen.svg)
 
 YouTube link parser for swift
 
