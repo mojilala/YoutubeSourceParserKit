@@ -149,10 +149,15 @@ public class Youtube: NSObject {
   public static func h264videosWithYoutubeURL(youtubeURL: NSURL,completion: ((
     videoInfo: [String: AnyObject]?, error: NSError?) -> Void)?) {
       let youtubeID = youtubeIDFromYoutubeURL(youtubeURL)
-      if let youtubeID = youtubeIDFromYoutubeURL(youtubeURL), videoInformation = h264videosWithYoutubeID(youtubeID) {
-          completion?(videoInfo: videoInformation, error: nil)
-      } else {
-        completion?(videoInfo: nil, error: NSError(domain: "com.player.yt.backgroundqueue", code: 1001, userInfo: ["error": "Invalid YouTube URL"]))
+      let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
+      dispatch_async(dispatch_get_global_queue(priority, 0)) {
+        dispatch_async(dispatch_get_main_queue()) {
+          if let youtubeID = self.youtubeIDFromYoutubeURL(youtubeURL), videoInformation = self.h264videosWithYoutubeID(youtubeID) {
+            completion?(videoInfo: videoInformation, error: nil)
+          } else {
+            completion?(videoInfo: nil, error: NSError(domain: "com.player.youtube.backgroundqueue", code: 1001, userInfo: ["error": "Invalid YouTube URL"]))
+          }
+        }
       }
   }
 }
