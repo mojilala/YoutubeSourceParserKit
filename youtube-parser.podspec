@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "youtube-parser"
-  s.version          = "0.2.1"
+  s.version          = "0.2.2"
   s.summary          = "YouTube parser for swift"
   s.homepage         = "https://github.com/toygard/youtube-parser"
   s.license          = 'MIT'
@@ -20,4 +20,5 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.source_files = 'youtube-parser/*.swift'
+  s.frameworks = 'UIKit'
 end
