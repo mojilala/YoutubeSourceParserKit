@@ -1,3 +1,7 @@
+#### Version 0.2.3
+
+* Add OSX deployment target
+
 #### Version 0.2.2
 
 * Add Changelog file

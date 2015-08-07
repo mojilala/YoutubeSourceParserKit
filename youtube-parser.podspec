@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "youtube-parser"
-  s.version          = "0.2.2"
+  s.version          = "0.2.3"
   s.summary          = "YouTube parser for swift"
   s.homepage         = "https://github.com/toygard/youtube-parser"
   s.license          = 'MIT'
@@ -17,6 +17,7 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/toygard/youtube-parser.git", :tag => s.version.to_s }
 
   s.platform     = :ios, '8.0'
+  s.osx.deployment_target = '10.8'
   s.requires_arc = true
 
   s.source_files = 'youtube-parser/*.swift'
