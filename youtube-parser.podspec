@@ -17,9 +17,6 @@ Pod::Spec.new do |s|
   s.source           = { :git => "https://github.com/toygard/youtube-parser.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = "8.0"
-  s.ios.frameworks  = "UIKit"
-  s.osx.deployment_target = '10.9'
-  s.osx.frameworks   = "Foundation"
   s.requires_arc = true
 
   s.source_files = 'youtube-parser/*.swift'
