@@ -5,7 +5,7 @@ YouTube link parser for swift
 
 ##Introduction
 
-__Requires iOS 7 or later and Xcode 6.1+__<br/>
+__Requires iOS 8 or later and Xcode 6.1+__<br/>
 Swift support uses dynamic frameworks and is therefore only supported on iOS > 8.
 
 ##Installation
