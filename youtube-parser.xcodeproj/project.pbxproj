@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C39430FC1BB66E8D00B47C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39430FB1BB66E8D00B47C2C /* AppDelegate.swift */; };
+		C3A838781BB746A0000C5D33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A838771BB746A0000C5D33 /* Default-568h@2x.png */; };
 		C3FC20F31B4996F30000E818 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC20F21B4996F30000E818 /* Youtube.swift */; };
 		C3FC20F81B4999EE0000E818 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC20F21B4996F30000E818 /* Youtube.swift */; };
 		C3FC20F91B499A180000E818 /* youtube_parserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC20E81B4996150000E818 /* youtube_parserTests.swift */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		C39430FB1BB66E8D00B47C2C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		C3A838771BB746A0000C5D33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3FC20CD1B4996150000E818 /* youtube-parser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "youtube-parser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FC20D11B4996150000E818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FC20E21B4996150000E818 /* youtube-parserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "youtube-parserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +56,7 @@
 		C3FC20C41B4996150000E818 = {
 			isa = PBXGroup;
 			children = (
+				C3A838771BB746A0000C5D33 /* Default-568h@2x.png */,
 				C3FC20CF1B4996150000E818 /* youtube-parser */,
 				C3FC20E51B4996150000E818 /* youtube-parserTests */,
 				C3FC20CE1B4996150000E818 /* Products */,
@@ -186,6 +189,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C3A838781BB746A0000C5D33 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +269,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -304,7 +308,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -338,10 +342,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -358,10 +359,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
