@@ -1,3 +1,7 @@
+#### Version 0.2.3
+
+* Supporting Swift 2.0
+
 #### Version 0.2.2
 
 * Add Changelog file

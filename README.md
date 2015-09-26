@@ -1,11 +1,11 @@
 # youtube-parser
-[![Build Status](https://travis-ci.org/toygard/youtube-parser.svg?branch=master)](https://travis-ci.org/toygard/youtube-parser) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/toygard/youtube-parser?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) ![Gitter](https://img.shields.io/badge/license-MIT-blue.svg) 
+[![Build Status](https://travis-ci.org/toygard/youtube-parser.svg?branch=master)](https://travis-ci.org/toygard/youtube-parser) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/toygard/youtube-parser?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) ![Gitter](https://img.shields.io/badge/license-MIT-blue.svg)
 
 YouTube link parser for swift
 
 ##Introduction
 
-__Requires iOS 8 or later and Xcode 6.1+__<br/>
+__Requires iOS 8 or later and Xcode 7.0+__<br/>
 Swift support uses dynamic frameworks and is therefore only supported on iOS > 8.
 
 ##Installation
@@ -30,19 +30,18 @@ import youtube_parser
 ```
 
 ```swift
-let testURL = NSURL(string: "https://www.youtube.com/watch?v=ngElkyQ6Rhs")!
-Youtube.h264videosWithYoutubeURL(testURL, completion: { (videoInfo, error) -> Void in
-    if let
-        videoURLString = videoInfo?["url"] as? String,
+let testURL = NSURL(string: "https://www.youtube.com/watch?v=swZJwZeMesk")!
+    Youtube.h264videosWithYoutubeURL(testURL) { (videoInfo, error) -> Void in
+      if let videoURLString = videoInfo?["url"] as? String,
         videoTitle = videoInfo?["title"] as? String {
-            println("\(videoTitle)")
-            println("\(videoURLString)")
-        }
-})
+          print("\(videoTitle)")
+          print("\(videoURLString)")
+      }
+    }
 ```
 
 ```
-videoInfo output: 
+videoInfo output:
 ```
 ```json
 {
@@ -73,7 +72,7 @@ class ViewController: UIViewController {
     moviePlayer.view.frame = view.frame
     view.addSubview(moviePlayer.view)
     moviePlayer.fullscreen = true
-    let youtubeURL = NSURL(string: "https://www.youtube.com/watch?v=ngElkyQ6Rhs")!
+    let youtubeURL = NSURL(string: "https://www.youtube.com/watch?v=swZJwZeMesk")!
     playVideoWithYoutubeURL(youtubeURL)
   }
 

@@ -8,7 +8,6 @@
 
 import UIKit
 import XCTest
-import youtube_parser
 
 class youtube_parserTests: XCTestCase {
     
@@ -49,7 +48,6 @@ class youtube_parserTests: XCTestCase {
   }
 
   func testH264videosWithYoutubeURL() {
-    let sampleLink = NSURL(string: "http://www.youtube.com/watch?v=1hZ98an9wjo")!
     if let videoComponents = Youtube.h264videosWithYoutubeID("1hZ98an9wjo") {
       XCTAssertNotNil(videoComponents, "video component is nil")
       if let itag = videoComponents["itag"] as? String {

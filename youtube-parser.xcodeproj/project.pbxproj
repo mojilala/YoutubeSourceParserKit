@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C39430FC1BB66E8D00B47C2C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C39430FB1BB66E8D00B47C2C /* AppDelegate.swift */; };
 		C3FC20F31B4996F30000E818 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC20F21B4996F30000E818 /* Youtube.swift */; };
 		C3FC20F81B4999EE0000E818 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC20F21B4996F30000E818 /* Youtube.swift */; };
 		C3FC20F91B499A180000E818 /* youtube_parserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3FC20E81B4996150000E818 /* youtube_parserTests.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C39430FB1BB66E8D00B47C2C /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		C3FC20CD1B4996150000E818 /* youtube-parser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "youtube-parser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FC20D11B4996150000E818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C3FC20E21B4996150000E818 /* youtube-parserTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "youtube-parserTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,7 @@
 		C3FC20CF1B4996150000E818 /* youtube-parser */ = {
 			isa = PBXGroup;
 			children = (
+				C39430FB1BB66E8D00B47C2C /* AppDelegate.swift */,
 				C3FC20F21B4996F30000E818 /* Youtube.swift */,
 				C3FC20D01B4996150000E818 /* Supporting Files */,
 			);
@@ -145,7 +148,9 @@
 		C3FC20C51B4996150000E818 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0710;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "Toygar Dündaralp";
 				TargetAttributes = {
 					C3FC20CC1B4996150000E818 = {
@@ -198,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C39430FC1BB66E8D00B47C2C /* AppDelegate.swift in Sources */,
 				C3FC20F31B4996F30000E818 /* Youtube.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -243,6 +249,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -311,6 +318,7 @@
 				INFOPLIST_FILE = "youtube-parser/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -321,6 +329,7 @@
 				INFOPLIST_FILE = "youtube-parser/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -339,6 +348,7 @@
 				);
 				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/youtube-parser.app/youtube-parser";
 			};
@@ -354,6 +364,7 @@
 				);
 				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/youtube-parser.app/youtube-parser";
 			};

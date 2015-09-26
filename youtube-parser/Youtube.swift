@@ -24,8 +24,8 @@ public extension NSString {
   Convenient method for decoding a html encoded string
   */
   func stringByDecodingURLFormat() -> String {
-    var result = self.stringByReplacingOccurrencesOfString("+", withString:" ")
-    return result.stringByReplacingPercentEscapesUsingEncoding(NSUTF8StringEncoding)!
+    let result = self.stringByReplacingOccurrencesOfString("+", withString:" ")
+    return result.stringByRemovingPercentEncoding!
   }
 
   /**
@@ -60,14 +60,14 @@ public class Youtube: NSObject {
   public static func youtubeIDFromYoutubeURL(youtubeURL: NSURL) -> String? {
     if let
       youtubeHost = youtubeURL.host,
-      youtubePathComponents = youtubeURL.pathComponents as? [String] {
+      youtubePathComponents = youtubeURL.pathComponents {
         let youtubeAbsoluteString = youtubeURL.absoluteString
         if youtubeHost == "youtu.be" {
           return youtubePathComponents[1]
-        } else if youtubeAbsoluteString?.rangeOfString("www.youtube.com/embed") != nil {
+        } else if youtubeAbsoluteString.rangeOfString("www.youtube.com/embed") != nil {
           return youtubePathComponents[2]
         } else if youtubeHost == "youtube.googleapis.com" ||
-          youtubeURL.pathComponents!.first!.isEqualToString("www.youtube.com") {
+          youtubeURL.pathComponents!.first == "www.youtube.com" {
             return youtubePathComponents[2]
         } else if let
           queryString = youtubeURL.dictionaryForQueryString(),
@@ -85,60 +85,60 @@ public class Youtube: NSObject {
   
   */
   public static func h264videosWithYoutubeID(youtubeID: String) -> [String: AnyObject]? {
-    if count(youtubeID) > 0 {
+    if youtubeID.characters.count > 0 {
       let urlString = String(format: "%@%@", infoURL, youtubeID) as String
       let url = NSURL(string: urlString)!
       let request = NSMutableURLRequest(URL: url)
+      request.timeoutInterval = 5.0
       request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
       request.HTTPMethod = "GET"
-      var response: NSURLResponse?
-      var error: NSError?
-      if let
-        responseData = NSURLConnection.sendSynchronousRequest(
-          request,
-          returningResponse: &response,
-          error: &error),
-        responseString = NSString(
-          data: responseData,
-          encoding: NSUTF8StringEncoding
-        ) {
-          let parts = responseString.dictionaryFromQueryStringComponents()
-          if parts.count > 0 {
-            var videoTitle: String = ""
-            var streamImage: String = ""
-            if let title = parts["title"] as? String {
-              videoTitle = title
+      var responseString = NSString()
+      let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+      let group = dispatch_group_create()
+      dispatch_group_enter(group)
+      session.dataTaskWithRequest(request, completionHandler: { (data, response, _) -> Void in
+        if let data = data as NSData? {
+          responseString = NSString(data: data, encoding: NSUTF8StringEncoding)!
+        }
+        dispatch_group_leave(group)
+      }).resume()
+      dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+      let parts = responseString.dictionaryFromQueryStringComponents()
+      if parts.count > 0 {
+        var videoTitle: String = ""
+        var streamImage: String = ""
+        if let title = parts["title"] as? String {
+          videoTitle = title
+        }
+        if let image = parts["iurl"] as? String {
+          streamImage = image
+        }
+        if let fmtStreamMap = parts["url_encoded_fmt_stream_map"] as? String {
+          // Live Stream
+          if let _: AnyObject = parts["live_playback"]{
+            if let hlsvp = parts["hlsvp"] as? String {
+              return [
+                "url": "\(hlsvp)",
+                "title": "\(videoTitle)",
+                "image": "\(streamImage)",
+                "isStream": true
+              ]
             }
-            if let image = parts["iurl"] as? String {
-              streamImage = image
-            }
-            if let fmtStreamMap = parts["url_encoded_fmt_stream_map"] as? String {
-              // Live Stream
-              if let isLivePlayback: AnyObject = parts["live_playback"]{
-                if let hlsvp = parts["hlsvp"] as? String {
-                  return [
-                    "url": "\(hlsvp)",
-                    "title": "\(videoTitle)",
-                    "image": "\(streamImage)",
-                    "isStream": true
-                  ]
-                }
-              } else {
-                var videoDictionary = []
-                let fmtStreamMapArray = fmtStreamMap.componentsSeparatedByString(",")
-                for videoEncodedString in fmtStreamMapArray {
-                  var videoComponents = videoEncodedString.dictionaryFromQueryStringComponents()
-                  videoComponents["title"] = videoTitle
-                  videoComponents["isStream"] = false
-                  return videoComponents as [String: AnyObject]
-                }
-              }
+          } else {
+            let fmtStreamMapArray = fmtStreamMap.componentsSeparatedByString(",")
+            for videoEncodedString in fmtStreamMapArray {
+              var videoComponents = videoEncodedString.dictionaryFromQueryStringComponents()
+              videoComponents["title"] = videoTitle
+              videoComponents["isStream"] = false
+              return videoComponents as [String: AnyObject]
             }
           }
+        }
       }
     }
     return nil
   }
+  
   /**
   Block based method for retreiving a iOS supported video link
 
@@ -148,7 +148,6 @@ public class Youtube: NSObject {
   */
   public static func h264videosWithYoutubeURL(youtubeURL: NSURL,completion: ((
     videoInfo: [String: AnyObject]?, error: NSError?) -> Void)?) {
-      let youtubeID = youtubeIDFromYoutubeURL(youtubeURL)
       let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
       dispatch_async(dispatch_get_global_queue(priority, 0)) {
         if let youtubeID = self.youtubeIDFromYoutubeURL(youtubeURL), videoInformation = self.h264videosWithYoutubeID(youtubeID) {
