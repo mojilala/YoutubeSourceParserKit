@@ -62,12 +62,12 @@ public class Youtube: NSObject {
       youtubeHost = youtubeURL.host,
       youtubePathComponents = youtubeURL.pathComponents {
         let youtubeAbsoluteString = youtubeURL.absoluteString
-        if youtubeHost == "youtu.be" {
+        if youtubeHost == "youtu.be" as String? {
           return youtubePathComponents[1]
         } else if youtubeAbsoluteString.rangeOfString("www.youtube.com/embed") != nil {
           return youtubePathComponents[2]
         } else if youtubeHost == "youtube.googleapis.com" ||
-          youtubeURL.pathComponents!.first == "www.youtube.com" {
+          youtubeURL.pathComponents!.first == "www.youtube.com" as String? {
             return youtubePathComponents[2]
         } else if let
           queryString = youtubeURL.dictionaryForQueryString(),
@@ -85,53 +85,51 @@ public class Youtube: NSObject {
   
   */
   public static func h264videosWithYoutubeID(youtubeID: String) -> [String: AnyObject]? {
-    if youtubeID.characters.count > 0 {
-      let urlString = String(format: "%@%@", infoURL, youtubeID) as String
-      let url = NSURL(string: urlString)!
-      let request = NSMutableURLRequest(URL: url)
-      request.timeoutInterval = 5.0
-      request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-      request.HTTPMethod = "GET"
-      var responseString = NSString()
-      let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-      let group = dispatch_group_create()
-      dispatch_group_enter(group)
-      session.dataTaskWithRequest(request, completionHandler: { (data, response, _) -> Void in
-        if let data = data as NSData? {
-          responseString = NSString(data: data, encoding: NSUTF8StringEncoding)!
-        }
-        dispatch_group_leave(group)
-      }).resume()
-      dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
-      let parts = responseString.dictionaryFromQueryStringComponents()
-      if parts.count > 0 {
-        var videoTitle: String = ""
-        var streamImage: String = ""
-        if let title = parts["title"] as? String {
-          videoTitle = title
-        }
-        if let image = parts["iurl"] as? String {
-          streamImage = image
-        }
-        if let fmtStreamMap = parts["url_encoded_fmt_stream_map"] as? String {
-          // Live Stream
-          if let _: AnyObject = parts["live_playback"]{
-            if let hlsvp = parts["hlsvp"] as? String {
-              return [
-                "url": "\(hlsvp)",
-                "title": "\(videoTitle)",
-                "image": "\(streamImage)",
-                "isStream": true
-              ]
-            }
-          } else {
-            let fmtStreamMapArray = fmtStreamMap.componentsSeparatedByString(",")
-            for videoEncodedString in fmtStreamMapArray {
-              var videoComponents = videoEncodedString.dictionaryFromQueryStringComponents()
-              videoComponents["title"] = videoTitle
-              videoComponents["isStream"] = false
-              return videoComponents as [String: AnyObject]
-            }
+    let urlString = String(format: "%@%@", infoURL, youtubeID) as String
+    let url = NSURL(string: urlString)!
+    let request = NSMutableURLRequest(URL: url)
+    request.timeoutInterval = 5.0
+    request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
+    request.HTTPMethod = "GET"
+    var responseString = NSString()
+    let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    let group = dispatch_group_create()
+    dispatch_group_enter(group)
+    session.dataTaskWithRequest(request, completionHandler: { (data, response, _) -> Void in
+      if let data = data as NSData? {
+        responseString = NSString(data: data, encoding: NSUTF8StringEncoding)!
+      }
+      dispatch_group_leave(group)
+    }).resume()
+    dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+    let parts = responseString.dictionaryFromQueryStringComponents()
+    if parts.count > 0 {
+      var videoTitle: String = ""
+      var streamImage: String = ""
+      if let title = parts["title"] as? String {
+        videoTitle = title
+      }
+      if let image = parts["iurl"] as? String {
+        streamImage = image
+      }
+      if let fmtStreamMap = parts["url_encoded_fmt_stream_map"] as? String {
+        // Live Stream
+        if let _: AnyObject = parts["live_playback"]{
+          if let hlsvp = parts["hlsvp"] as? String {
+            return [
+              "url": "\(hlsvp)",
+              "title": "\(videoTitle)",
+              "image": "\(streamImage)",
+              "isStream": true
+            ]
+          }
+        } else {
+          let fmtStreamMapArray = fmtStreamMap.componentsSeparatedByString(",")
+          for videoEncodedString in fmtStreamMapArray {
+            var videoComponents = videoEncodedString.dictionaryFromQueryStringComponents()
+            videoComponents["title"] = videoTitle
+            videoComponents["isStream"] = false
+            return videoComponents as [String: AnyObject]
           }
         }
       }
