@@ -10,7 +10,7 @@
 Pod::Spec.new do |s|
   s.name             = "youtube-parser"
   s.version          = "0.2.3"
-  s.summary          = "YouTube parser for swift"
+  s.summary          = "YouTube Video Link Parser for Swift"
   s.homepage         = "https://github.com/toygard/youtube-parser"
   s.license          = 'MIT'
   s.author           = { "Toygar Dündaralp" => "tdundaralp@gmail.com" }
