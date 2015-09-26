@@ -12,13 +12,13 @@ Pod::Spec.new do |s|
   s.version          = "0.2.3"
   s.summary          = "YouTube Video Link Parser for Swift"
   s.homepage         = "https://github.com/toygard/youtube-parser"
-  s.license          = 'MIT'
+  s.license          = "MIT"
   s.author           = { "Toygar Dündaralp" => "tdundaralp@gmail.com" }
   s.source           = { :git => "https://github.com/toygard/youtube-parser.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = "8.0"
   s.requires_arc = true
 
-  s.source_files = 'youtube-parser/*.swift'
-  s.frameworks = 'UIKit'
+  s.source_files = "youtube-parser/*.swift"
+  s.frameworks = "UIKit"
 end
