@@ -5,15 +5,17 @@ YouTube link parser for swift
 
 ##Introduction
 
-__Requires iOS 7 or later and Xcode 6.1+__
+__Requires iOS 7 or later and Xcode 6.1+__<br/>
+Swift support uses dynamic frameworks and is therefore only supported on iOS > 8.
 
 ##Installation
 
 To install via CocoaPods add this line to your `Podfile`.
-
 ```
 use_frameworks!
-
+```
+and
+```
 pod "youtube-parser"
 ```
 
