@@ -47,6 +47,14 @@ class youtube_parserTests: XCTestCase {
     }
   }
 
+  func testYoutubeIDFromMobileYoutubeURL() {
+    let sampleLink = NSURL(string: "https://m.youtube.com/#/watch?v=1hZ98an9wjo")!
+    XCTAssertNotNil(Youtube.youtubeIDFromYoutubeURL(sampleLink), "Youtube ID is nil")
+    if let youtubeID = Youtube.youtubeIDFromYoutubeURL(sampleLink) {
+      XCTAssertEqual(youtubeID, "1hZ98an9wjo", "Youtube ID not same")
+    }
+  }
+
   func testH264videosWithYoutubeURL() {
     if let videoComponents = Youtube.h264videosWithYoutubeID("1hZ98an9wjo") {
       XCTAssertNotNil(videoComponents, "video component is nil")
