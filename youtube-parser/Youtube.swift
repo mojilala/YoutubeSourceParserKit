@@ -15,7 +15,16 @@ public extension NSURL {
   @return key value dictionary with each parameter as an array
   */
   func dictionaryForQueryString() -> [String: AnyObject]? {
-    return self.query?.dictionaryFromQueryStringComponents()
+    if let query = self.query {
+      return query.dictionaryFromQueryStringComponents()
+    }
+
+    // Note: find youtube ID in m.youtube.com "https://m.youtube.com/#/watch?v=1hZ98an9wjo"
+    let result = absoluteString.componentsSeparatedByString("?")
+    if result.count > 1 {
+      return result.last?.dictionaryFromQueryStringComponents()
+    }
+    return nil
   }
 }
 
