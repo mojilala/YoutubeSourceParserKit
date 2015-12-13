@@ -39,6 +39,38 @@ class youtube_parserTests: XCTestCase {
     }
   }
 
+  func testInvalidURLs1() {
+    let sampleLink = NSURL(string: "?v=1hZ98an9wjo")!
+    XCTAssertNil(Youtube.youtubeIDFromYoutubeURL(sampleLink), "Youtube ID is not nil")
+    if let youtubeID = Youtube.youtubeIDFromYoutubeURL(sampleLink) {
+      XCTAssertEqual(youtubeID, "1hZ98an9wjo", "Youtube ID not same")
+    }
+  }
+
+  func testInvalidURLs2() {
+    let sampleLink = NSURL(string: "?v=")!
+    XCTAssertNil(Youtube.youtubeIDFromYoutubeURL(sampleLink), "Youtube ID is not nil")
+    if let youtubeID = Youtube.youtubeIDFromYoutubeURL(sampleLink) {
+      XCTAssertEqual(youtubeID, "", "Youtube ID not same")
+    }
+  }
+
+  func testInvalidURLs3() {
+    let sampleLink = NSURL(string: "v=1hZ98an9wjo")!
+    XCTAssertNil(Youtube.youtubeIDFromYoutubeURL(sampleLink), "Youtube ID is not nil")
+    if let youtubeID = Youtube.youtubeIDFromYoutubeURL(sampleLink) {
+      XCTAssertEqual(youtubeID, "v=1hZ98an9wjo", "Youtube ID not same")
+    }
+  }
+
+  func testInvalidURLs4() {
+    let sampleLink = NSURL(string: "v1hZ98an9wjo")!
+    XCTAssertNil(Youtube.youtubeIDFromYoutubeURL(sampleLink), "Youtube ID is not nil")
+    if let youtubeID = Youtube.youtubeIDFromYoutubeURL(sampleLink) {
+      XCTAssertEqual(youtubeID, "v1hZ98an9wjo", "Youtube ID not same")
+    }
+  }
+
   func testYoutubeIDFromYoutubeURL() {
     let sampleLink = NSURL(string: "http://www.youtube.com/watch?v=1hZ98an9wjo")!
     XCTAssertNotNil(Youtube.youtubeIDFromYoutubeURL(sampleLink), "Youtube ID is nil")
