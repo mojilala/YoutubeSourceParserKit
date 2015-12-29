@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 [![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://github.com/mobileplayer/mobileplayer-ios)
 [![Ready](https://badge.waffle.io/movielala/YoutubeSourceParserKit.png?label=Ready&title=Ready)](https://waffle.io/movielala/YoutubeSourceParserKit)
-[![StackOverflow](https://img.shields.io/badge/StackOverflow-Ask%20a%20question!-blue.svg)](http://stackoverflow.com/questions/ask?tags=YoutubeSourceParserKit+ios+swif)
+[![StackOverflow](https://img.shields.io/badge/StackOverflow-Ask%20a%20question!-blue.svg)](http://stackoverflow.com/questions/ask?tags=YoutubeSourceParserKit+ios+swift)
 [![Join the chat at https://gitter.im/mobileplayer/mobileplayer-ios](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/movielala/YoutubeSourceParserKit)
 
 
