@@ -1,5 +1,13 @@
-# youtube-parser
-[![Build Status](https://travis-ci.org/toygar/youtube-parser.svg?branch=master)](https://travis-ci.org/toygar/youtube-parser) [![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/toygar/youtube-parser?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) ![Gitter](https://img.shields.io/badge/license-MIT-blue.svg)
+# YoutubeSourceParserKit 
+
+==================
+[![Build Status](https://img.shields.io/travis/movielala/YoutubeSourceParserKit/master.svg)](https://travis-ci.org/movielala/YoutubeSourceParserKit)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+[![Dependencies](https://img.shields.io/badge/dependencies-none-brightgreen.svg)](https://github.com/mobileplayer/mobileplayer-ios)
+[![Ready](https://badge.waffle.io/movielala/YoutubeSourceParserKit.png?label=Ready&title=Ready)](https://waffle.io/movielala/YoutubeSourceParserKit)
+[![StackOverflow](https://img.shields.io/badge/StackOverflow-Ask%20a%20question!-blue.svg)](http://stackoverflow.com/questions/ask?tags=YoutubeSourceParserKit+ios+swif)
+[![Join the chat at https://gitter.im/mobileplayer/mobileplayer-ios](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/movielala/YoutubeSourceParserKit)
+
 
 YouTube Video Link Parser for Swift
 
