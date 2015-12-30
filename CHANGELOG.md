@@ -1,3 +1,8 @@
+#### Version 0.2.4
+
+* Rename 'YoutubeSourceParserKit'
+* Add tvOS support
+
 #### Version 0.2.3
 
 * Supporting Swift 2.0
