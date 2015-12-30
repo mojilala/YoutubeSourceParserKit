@@ -24,7 +24,7 @@ use_frameworks!
 ```
 and
 ```
-pod "youtube-parser"
+pod 'YoutubeSourceParserKit'
 ```
 
 Then, run the following command:
@@ -34,7 +34,7 @@ Then, run the following command:
 ##Usage
 
 ```swift
-import youtube_parser
+import YoutubeSourceParserKit
 ```
 
 ```swift
@@ -68,7 +68,7 @@ videoInfo output:
 
 ```swift
 import UIKit
-import youtube_parser
+import YoutubeSourceParserKit
 import MediaPlayer
 
 class ViewController: UIViewController {
