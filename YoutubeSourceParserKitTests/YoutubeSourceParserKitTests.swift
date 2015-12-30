@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class youtube_parserTests: XCTestCase {
+class YoutubeSourceParserKitTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
