@@ -10,7 +10,7 @@
 [![Join the chat at https://gitter.im/mobileplayer/mobileplayer-ios](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/movielala/YoutubeSourceParserKit)
 
 
-YouTube Video Link Parser for Swift
+YouTube Video Link Parser for Swift. Heavily inspried from hellozimi repo [HCYoutubeParser](https://github.com/hellozimi/HCYoutubeParser)
 
 ##Introduction
 
