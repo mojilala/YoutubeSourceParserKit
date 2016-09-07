@@ -14,7 +14,7 @@ public extension URL {
 
   @return key value dictionary with each parameter as an array
   */
-  func dictionaryForQueryString() -> [String: AnyObject]? {
+  func dictionaryForQueryString() -> [String: Any]? {
     if let query = self.query {
       return query.dictionaryFromQueryStringComponents()
     }
@@ -42,8 +42,8 @@ public extension NSString {
 
   @return key value dictionary with each parameter as an array
   */
-  func dictionaryFromQueryStringComponents() -> [String: AnyObject] {
-    var parameters = [String: AnyObject]()
+  func dictionaryFromQueryStringComponents() -> [String: Any] {
+    var parameters = [String: Any]()
     for keyValue in components(separatedBy: "&") {
       let keyValueArray = keyValue.components(separatedBy: "=")
       if keyValueArray.count < 2 {
@@ -51,7 +51,7 @@ public extension NSString {
       }
       let key = keyValueArray[0].stringByDecodingURLFormat()
       let value = keyValueArray[1].stringByDecodingURLFormat()
-      parameters[key] = value as AnyObject?
+      parameters[key] = value as Any?
     }
     return parameters
   }
@@ -92,7 +92,7 @@ open class Youtube: NSObject {
   @return dictionary with the available formats for the selected video
   
   */
-  open static func h264videosWithYoutubeID(_ youtubeID: String) -> [String: AnyObject]? {
+  open static func h264videosWithYoutubeID(_ youtubeID: String) -> [String: Any]? {
     let urlString = String(format: "%@%@", infoURL, youtubeID) as String
     let url = URL(string: urlString)!
     var request = URLRequest(url:url)
@@ -122,22 +122,22 @@ open class Youtube: NSObject {
       }
       if let fmtStreamMap = parts["url_encoded_fmt_stream_map"] as? String {
         // Live Stream
-        if let _: AnyObject = parts["live_playback"]{
+        if let _: Any = parts["live_playback"]{
           if let hlsvp = parts["hlsvp"] as? String {
             return [
-              "url": "\(hlsvp)" as AnyObject,
-              "title": "\(videoTitle)" as AnyObject,
-              "image": "\(streamImage)" as AnyObject,
-              "isStream": true as AnyObject
+              "url": "\(hlsvp)" as Any,
+              "title": "\(videoTitle)" as Any,
+              "image": "\(streamImage)" as Any,
+              "isStream": true as Any
             ]
           }
         } else {
           let fmtStreamMapArray = fmtStreamMap.components(separatedBy: ",")
           for videoEncodedString in fmtStreamMapArray {
             var videoComponents = videoEncodedString.dictionaryFromQueryStringComponents()
-            videoComponents["title"] = videoTitle as AnyObject?
-            videoComponents["isStream"] = false as AnyObject?
-            return videoComponents as [String: AnyObject]
+            videoComponents["title"] = videoTitle as Any?
+            videoComponents["isStream"] = false as Any?
+            return videoComponents as [String: Any]
           }
         }
       }
@@ -153,7 +153,7 @@ open class Youtube: NSObject {
 
   */
   open static func h264videosWithYoutubeURL(_ youtubeURL: URL,completion: ((
-    _ videoInfo: [String: AnyObject]?, _ error: NSError?) -> Void)?) {
+    _ videoInfo: [String: Any]?, _ error: NSError?) -> Void)?) {
       let priority = DispatchQueue.GlobalQueuePriority.background
       DispatchQueue.global(priority: priority).async {
         if let youtubeID = self.youtubeIDFromYoutubeURL(youtubeURL), let videoInformation = self.h264videosWithYoutubeID(youtubeID) {
