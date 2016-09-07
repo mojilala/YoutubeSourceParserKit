@@ -33,7 +33,7 @@
 		B24965E31C3398310050DF64 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3A838771BB746A0000C5D33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeSourceParserKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoutubeSourceParserKit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3FC20E21B4996150000E818 /* YoutubeSourceParserKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoutubeSourceParserKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */,
-				C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */,
+				C3FC20E21B4996150000E818 /* YoutubeSourceParserKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +128,7 @@
 			);
 			name = YoutubeSourceParserKitTests;
 			productName = "youtube-parserTests";
-			productReference = C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */;
+			productReference = C3FC20E21B4996150000E818 /* YoutubeSourceParserKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -139,14 +139,16 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Toygar Dündaralp";
 				TargetAttributes = {
 					C3FC20CC1B4996150000E818 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 					C3FC20E11B4996150000E818 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 						TestTargetID = C3FC20CC1B4996150000E818;
 					};
 				};
@@ -231,13 +233,16 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -277,13 +282,16 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -297,6 +305,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -312,6 +321,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = YoutubeSourceParserKit;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -325,6 +335,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = YoutubeSourceParserKit;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -337,10 +348,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
+				INFOPLIST_FILE = YoutubeSourceParserKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = YoutubeSourceParserKit;
+				PRODUCT_NAME = YoutubeSourceParserKitTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YoutubeSourceParserKit.app/YoutubeSourceParserKit";
 			};
 			name = Debug;
@@ -350,10 +362,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
+				INFOPLIST_FILE = YoutubeSourceParserKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = YoutubeSourceParserKit;
+				PRODUCT_NAME = YoutubeSourceParserKitTests;
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YoutubeSourceParserKit.app/YoutubeSourceParserKit";
 			};
 			name = Release;
