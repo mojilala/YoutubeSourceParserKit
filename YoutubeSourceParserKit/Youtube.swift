@@ -20,10 +20,12 @@ public extension NSURL {
     }
 
     // Note: find youtube ID in m.youtube.com "https://m.youtube.com/#/watch?v=1hZ98an9wjo"
-    let result = absoluteString.componentsSeparatedByString("?")
-    if result.count > 1 {
-      return result.last?.dictionaryFromQueryStringComponents()
+    if let result = self.absoluteString?.componentsSeparatedByString("?") {
+      if result.count > 1 {
+        return result.last?.dictionaryFromQueryStringComponents()
+      }
     }
+
     return nil
   }
 }
@@ -69,20 +71,20 @@ public class Youtube: NSObject {
   public static func youtubeIDFromYoutubeURL(youtubeURL: NSURL) -> String? {
     if let
       youtubeHost = youtubeURL.host,
-      youtubePathComponents = youtubeURL.pathComponents {
-        let youtubeAbsoluteString = youtubeURL.absoluteString
-        if youtubeHost == "youtu.be" as String? {
-          return youtubePathComponents[1]
-        } else if youtubeAbsoluteString.rangeOfString("www.youtube.com/embed") != nil {
-          return youtubePathComponents[2]
-        } else if youtubeHost == "youtube.googleapis.com" ||
-          youtubeURL.pathComponents!.first == "www.youtube.com" as String? {
-            return youtubePathComponents[2]
-        } else if let
-          queryString = youtubeURL.dictionaryForQueryString(),
-          searchParam = queryString["v"] as? String {
-            return searchParam
-        }
+      youtubePathComponents = youtubeURL.pathComponents,
+      absoluteString = youtubeURL.absoluteString {
+      if youtubeHost == "youtu.be" as String? {
+        return youtubePathComponents[1]
+      } else if absoluteString.rangeOfString("www.youtube.com/embed") != nil {
+        return youtubePathComponents[2]
+      } else if youtubeHost == "youtube.googleapis.com" ||
+        youtubeURL.pathComponents!.first == "www.youtube.com" as String? {
+        return youtubePathComponents[2]
+      } else if let
+        queryString = youtubeURL.dictionaryForQueryString(),
+        searchParam = queryString["v"] as? String {
+        return searchParam
+      }
     }
     return nil
   }
