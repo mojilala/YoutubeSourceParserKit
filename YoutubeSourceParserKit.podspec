@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "YoutubeSourceParserKit"
-  s.version          = "0.2.4"
+  s.version          = "0.2.5"
   s.summary          = "YouTube Video Link Parser for Swift"
   s.homepage         = "https://github.com/movielala/YoutubeSourceParserKit"
   s.license          = "MIT"
