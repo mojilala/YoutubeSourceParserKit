@@ -11,7 +11,9 @@
 		B24965E01C33979F0050DF64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24965DF1C33979F0050DF64 /* Images.xcassets */; };
 		B24965E21C3397D70050DF64 /* YoutubeSourceParserKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24965DA1C3397960050DF64 /* YoutubeSourceParserKitTests.swift */; };
 		B24965E41C3398310050DF64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24965E31C3398310050DF64 /* AppDelegate.swift */; };
-		C3A838781BB746A0000C5D33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A838771BB746A0000C5D33 /* Default-568h@2x.png */; };
+		E2D9650221EF5EFE0015EB98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D9650121EF5EFE0015EB98 /* LaunchScreen.storyboard */; };
+		E2D9650421EF5FA10015EB98 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D9650321EF5FA10015EB98 /* ViewController.swift */; };
+		E2D9650621EF5FA80015EB98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D9650521EF5FA80015EB98 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,9 +33,11 @@
 		B24965DA1C3397960050DF64 /* YoutubeSourceParserKitTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YoutubeSourceParserKitTests.swift; sourceTree = "<group>"; };
 		B24965DF1C33979F0050DF64 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		B24965E31C3398310050DF64 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C3A838771BB746A0000C5D33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeSourceParserKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoutubeSourceParserKit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3FC20E21B4996150000E818 /* YoutubeSourceParserKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoutubeSourceParserKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E2D9650121EF5EFE0015EB98 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E2D9650321EF5FA10015EB98 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E2D9650521EF5FA80015EB98 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,8 +80,10 @@
 		C3FC20C41B4996150000E818 = {
 			isa = PBXGroup;
 			children = (
-				C3A838771BB746A0000C5D33 /* Default-568h@2x.png */,
 				B24965E31C3398310050DF64 /* AppDelegate.swift */,
+				E2D9650321EF5FA10015EB98 /* ViewController.swift */,
+				E2D9650521EF5FA80015EB98 /* Main.storyboard */,
+				E2D9650121EF5EFE0015EB98 /* LaunchScreen.storyboard */,
 				B24965D51C3397960050DF64 /* YoutubeSourceParserKit */,
 				B24965D81C3397960050DF64 /* YoutubeSourceParserKitTests */,
 				C3FC20CE1B4996150000E818 /* Products */,
@@ -88,7 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */,
-				C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */,
+				C3FC20E21B4996150000E818 /* YoutubeSourceParserKitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,7 +134,7 @@
 			);
 			name = YoutubeSourceParserKitTests;
 			productName = "youtube-parserTests";
-			productReference = C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */;
+			productReference = C3FC20E21B4996150000E818 /* YoutubeSourceParserKitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -139,14 +145,16 @@
 			attributes = {
 				LastSwiftMigration = 0710;
 				LastSwiftUpdateCheck = 0710;
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Toygar Dündaralp";
 				TargetAttributes = {
 					C3FC20CC1B4996150000E818 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 0800;
 					};
 					C3FC20E11B4996150000E818 = {
 						CreatedOnToolsVersion = 6.4;
+						LastSwiftMigration = 1010;
 						TestTargetID = C3FC20CC1B4996150000E818;
 					};
 				};
@@ -175,8 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2D9650621EF5FA80015EB98 /* Main.storyboard in Resources */,
 				B24965E01C33979F0050DF64 /* Images.xcassets in Resources */,
-				C3A838781BB746A0000C5D33 /* Default-568h@2x.png in Resources */,
+				E2D9650221EF5EFE0015EB98 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E2D9650421EF5FA10015EB98 /* ViewController.swift in Sources */,
 				B24965E41C3398310050DF64 /* AppDelegate.swift in Sources */,
 				B24965DC1C3397960050DF64 /* Youtube.swift in Sources */,
 			);
@@ -226,18 +236,29 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -272,18 +293,29 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -297,6 +329,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -308,10 +341,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = "$(SRCROOT)/YoutubeSourceParserKit/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = YoutubeSourceParserKit;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -321,10 +355,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				INFOPLIST_FILE = "$(SRCROOT)/YoutubeSourceParserKit/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = YoutubeSourceParserKit;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -337,10 +372,12 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
+				INFOPLIST_FILE = YoutubeSourceParserKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = YoutubeSourceParserKit;
+				PRODUCT_NAME = YoutubeSourceParserKitTests;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YoutubeSourceParserKit.app/YoutubeSourceParserKit";
 			};
 			name = Debug;
@@ -350,10 +387,12 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
+				INFOPLIST_FILE = YoutubeSourceParserKitTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = YoutubeSourceParserKit;
+				PRODUCT_NAME = YoutubeSourceParserKitTests;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YoutubeSourceParserKit.app/YoutubeSourceParserKit";
 			};
 			name = Release;

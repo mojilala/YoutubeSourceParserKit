@@ -12,26 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
-  func application(application: UIApplication,
-    didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    let testURL = NSURL(string: "https://www.youtube.com/watch?v=swZJwZeMesk")!
-    Youtube.h264videosWithYoutubeURL(testURL) { (videoInfo, error) -> Void in
-      if let videoURLString = videoInfo?["url"] as? String,
-        videoTitle = videoInfo?["title"] as? String {
-          print("\(videoTitle)")
-          print("\(videoURLString)")
-      }
-    }
+
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     return true
   }
-  
-  func applicationWillResignActive(application: UIApplication) { }
-  
-  func applicationDidEnterBackground(application: UIApplication) { }
-  
-  func applicationWillEnterForeground(application: UIApplication) { }
-  
-  func applicationDidBecomeActive(application: UIApplication) { }
-  
-  func applicationWillTerminate(application: UIApplication) { }
+
 }
