@@ -20,8 +20,8 @@ public extension NSURL {
     }
 
     // Note: find youtube ID in m.youtube.com "https://m.youtube.com/#/watch?v=1hZ98an9wjo"
-    let result = absoluteString.componentsSeparatedByString("?")
-    if result.count > 1 {
+    
+    if let result = absoluteString?.components(separatedBy: "?"), result.count > 1 {
       return result.last?.dictionaryFromQueryStringComponents()
     }
     return nil
@@ -32,9 +32,9 @@ public extension NSString {
   /**
   Convenient method for decoding a html encoded string
   */
-  func stringByDecodingURLFormat() -> String {
-    let result = self.stringByReplacingOccurrencesOfString("+", withString:" ")
-    return result.stringByRemovingPercentEncoding!
+  func stringByDecodingURLFormat() -> String? {
+    let result = self.replacingOccurrences(of: "+", with:" ")
+    return result.removingPercentEncoding
   }
 
   /**
@@ -44,14 +44,14 @@ public extension NSString {
   */
   func dictionaryFromQueryStringComponents() -> [String: AnyObject] {
     var parameters = [String: AnyObject]()
-    for keyValue in componentsSeparatedByString("&") {
-      let keyValueArray = keyValue.componentsSeparatedByString("=")
+    for keyValue in components(separatedBy: "&") {
+        let keyValueArray = keyValue.components(separatedBy: "=")
       if keyValueArray.count < 2 {
         continue
       }
       let key = keyValueArray[0].stringByDecodingURLFormat()
       let value = keyValueArray[1].stringByDecodingURLFormat()
-      parameters[key] = value
+        parameters[key!] = value as AnyObject
     }
     return parameters
   }
@@ -69,18 +69,18 @@ public class Youtube: NSObject {
   public static func youtubeIDFromYoutubeURL(youtubeURL: NSURL) -> String? {
     if let
       youtubeHost = youtubeURL.host,
-      youtubePathComponents = youtubeURL.pathComponents {
+        let youtubePathComponents = youtubeURL.pathComponents {
         let youtubeAbsoluteString = youtubeURL.absoluteString
         if youtubeHost == "youtu.be" as String? {
           return youtubePathComponents[1]
-        } else if youtubeAbsoluteString.rangeOfString("www.youtube.com/embed") != nil {
+        } else if youtubeAbsoluteString?.range(of:"www.youtube.com/embed") != nil {
           return youtubePathComponents[2]
         } else if youtubeHost == "youtube.googleapis.com" ||
           youtubeURL.pathComponents!.first == "www.youtube.com" as String? {
             return youtubePathComponents[2]
         } else if let
           queryString = youtubeURL.dictionaryForQueryString(),
-          searchParam = queryString["v"] as? String {
+            let searchParam = queryString["v"] as? String {
             return searchParam
         }
     }
@@ -96,21 +96,21 @@ public class Youtube: NSObject {
   public static func h264videosWithYoutubeID(youtubeID: String) -> [String: AnyObject]? {
     let urlString = String(format: "%@%@", infoURL, youtubeID) as String
     let url = NSURL(string: urlString)!
-    let request = NSMutableURLRequest(URL: url)
+    let request = NSMutableURLRequest(url: url as URL)
     request.timeoutInterval = 5.0
     request.setValue(userAgent, forHTTPHeaderField: "User-Agent")
-    request.HTTPMethod = "GET"
+    request.httpMethod = "GET"
     var responseString = NSString()
-    let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-    let group = dispatch_group_create()
-    dispatch_group_enter(group)
-    session.dataTaskWithRequest(request, completionHandler: { (data, response, _) -> Void in
+    let session = URLSession(configuration: URLSessionConfiguration.default)
+    let group = DispatchGroup()
+    group.enter()
+    session.dataTask(with: request as URLRequest, completionHandler: { (data, response, _) -> Void in
       if let data = data as NSData? {
-        responseString = NSString(data: data, encoding: NSUTF8StringEncoding)!
+        responseString = NSString(data: data as Data, encoding: String.Encoding.utf8.rawValue)!
       }
-      dispatch_group_leave(group)
+        group.leave()
     }).resume()
-    dispatch_group_wait(group, DISPATCH_TIME_FOREVER)
+    let _ = group.wait(timeout: .distantFuture)
     let parts = responseString.dictionaryFromQueryStringComponents()
     if parts.count > 0 {
       var videoTitle: String = ""
@@ -126,18 +126,18 @@ public class Youtube: NSObject {
         if let _: AnyObject = parts["live_playback"]{
           if let hlsvp = parts["hlsvp"] as? String {
             return [
-              "url": "\(hlsvp)",
-              "title": "\(videoTitle)",
-              "image": "\(streamImage)",
-              "isStream": true
+                "url": "\(hlsvp)" as AnyObject,
+                "title": "\(videoTitle)" as AnyObject,
+                "image": "\(streamImage)" as AnyObject,
+                "isStream": true as AnyObject
             ]
           }
         } else {
-          let fmtStreamMapArray = fmtStreamMap.componentsSeparatedByString(",")
+            let fmtStreamMapArray = fmtStreamMap.components(separatedBy: ",")
           for videoEncodedString in fmtStreamMapArray {
             var videoComponents = videoEncodedString.dictionaryFromQueryStringComponents()
-            videoComponents["title"] = videoTitle
-            videoComponents["isStream"] = false
+            videoComponents["title"] = videoTitle as AnyObject
+            videoComponents["isStream"] = false as AnyObject
             return videoComponents as [String: AnyObject]
           }
         }
@@ -153,19 +153,18 @@ public class Youtube: NSObject {
   @param completeBlock the block which is called on completion
 
   */
-  public static func h264videosWithYoutubeURL(youtubeURL: NSURL,completion: ((
-    videoInfo: [String: AnyObject]?, error: NSError?) -> Void)?) {
-      let priority = DISPATCH_QUEUE_PRIORITY_BACKGROUND
-      dispatch_async(dispatch_get_global_queue(priority, 0)) {
-        if let youtubeID = self.youtubeIDFromYoutubeURL(youtubeURL), videoInformation = self.h264videosWithYoutubeID(youtubeID) {
-          dispatch_async(dispatch_get_main_queue()) {
-            completion?(videoInfo: videoInformation, error: nil)
-          }
-        }else{
-          dispatch_async(dispatch_get_main_queue()) {
-            completion?(videoInfo: nil, error: NSError(domain: "com.player.youtube.backgroundqueue", code: 1001, userInfo: ["error": "Invalid YouTube URL"]))
-          }
+    public static func h264videosWithYoutubeURL(youtubeURL: NSURL,completion: ((
+        _ videoInfo: [String: AnyObject]?, _ error: NSError?) -> Void)?) {
+        DispatchQueue.global(qos: .background).async {
+            if let youtubeID = self.youtubeIDFromYoutubeURL(youtubeURL: youtubeURL), let videoInformation = self.h264videosWithYoutubeID(youtubeID: youtubeID) {
+                DispatchQueue.main.async {
+                    completion?(videoInformation, nil)
+                }
+            }else{
+                DispatchQueue.main.async {
+                    completion?(nil, NSError(domain: "com.player.youtube.backgroundqueue", code: 1001, userInfo: ["error": "Invalid YouTube URL"]))
+                }
+            }
         }
-      }
     }
-  }
+}
