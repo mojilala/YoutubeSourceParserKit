@@ -9,20 +9,9 @@
 /* Begin PBXBuildFile section */
 		B24965DC1C3397960050DF64 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24965D71C3397960050DF64 /* Youtube.swift */; };
 		B24965E01C33979F0050DF64 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B24965DF1C33979F0050DF64 /* Images.xcassets */; };
-		B24965E21C3397D70050DF64 /* YoutubeSourceParserKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24965DA1C3397960050DF64 /* YoutubeSourceParserKitTests.swift */; };
 		B24965E41C3398310050DF64 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24965E31C3398310050DF64 /* AppDelegate.swift */; };
 		C3A838781BB746A0000C5D33 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C3A838771BB746A0000C5D33 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C3FC20E31B4996150000E818 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C3FC20C51B4996150000E818 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C3FC20CC1B4996150000E818;
-			remoteInfo = "youtube-parser";
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		B24965D61C3397960050DF64 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -33,18 +22,10 @@
 		B24965E31C3398310050DF64 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3A838771BB746A0000C5D33 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YoutubeSourceParserKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YoutubeSourceParserKit.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		C3FC20CA1B4996150000E818 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C3FC20DF1B4996150000E818 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -88,7 +69,6 @@
 			isa = PBXGroup;
 			children = (
 				C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */,
-				C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -113,24 +93,6 @@
 			productReference = C3FC20CD1B4996150000E818 /* YoutubeSourceParserKit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C3FC20E11B4996150000E818 /* YoutubeSourceParserKitTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C3FC20EF1B4996150000E818 /* Build configuration list for PBXNativeTarget "YoutubeSourceParserKitTests" */;
-			buildPhases = (
-				C3FC20DE1B4996150000E818 /* Sources */,
-				C3FC20DF1B4996150000E818 /* Frameworks */,
-				C3FC20E01B4996150000E818 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C3FC20E41B4996150000E818 /* PBXTargetDependency */,
-			);
-			name = YoutubeSourceParserKitTests;
-			productName = "youtube-parserTests";
-			productReference = C3FC20E21B4996150000E818 /* YoutubeSourceParserKit.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -147,10 +109,6 @@
 						DevelopmentTeam = 32G2AFJ7A5;
 						ProvisioningStyle = Automatic;
 					};
-					C3FC20E11B4996150000E818 = {
-						CreatedOnToolsVersion = 6.4;
-						TestTargetID = C3FC20CC1B4996150000E818;
-					};
 				};
 			};
 			buildConfigurationList = C3FC20C81B4996150000E818 /* Build configuration list for PBXProject "YoutubeSourceParserKit" */;
@@ -158,6 +116,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -167,7 +126,6 @@
 			projectRoot = "";
 			targets = (
 				C3FC20CC1B4996150000E818 /* YoutubeSourceParserKit */,
-				C3FC20E11B4996150000E818 /* YoutubeSourceParserKitTests */,
 			);
 		};
 /* End PBXProject section */
@@ -179,13 +137,6 @@
 			files = (
 				B24965E01C33979F0050DF64 /* Images.xcassets in Resources */,
 				C3A838781BB746A0000C5D33 /* Default-568h@2x.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C3FC20E01B4996150000E818 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,23 +152,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C3FC20DE1B4996150000E818 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B24965E21C3397D70050DF64 /* YoutubeSourceParserKitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C3FC20E41B4996150000E818 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C3FC20CC1B4996150000E818 /* YoutubeSourceParserKit */;
-			targetProxy = C3FC20E31B4996150000E818 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		C3FC20EA1B4996150000E818 /* Debug */ = {
@@ -361,36 +296,6 @@
 			};
 			name = Release;
 		};
-		C3FC20F01B4996150000E818 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = YoutubeSourceParserKit;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YoutubeSourceParserKit.app/YoutubeSourceParserKit";
-			};
-			name = Debug;
-		};
-		C3FC20F11B4996150000E818 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = "";
-				INFOPLIST_FILE = "youtube-parserTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.dundaralp.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = YoutubeSourceParserKit;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YoutubeSourceParserKit.app/YoutubeSourceParserKit";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -408,15 +313,6 @@
 			buildConfigurations = (
 				C3FC20ED1B4996150000E818 /* Debug */,
 				C3FC20EE1B4996150000E818 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C3FC20EF1B4996150000E818 /* Build configuration list for PBXNativeTarget "YoutubeSourceParserKitTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C3FC20F01B4996150000E818 /* Debug */,
-				C3FC20F11B4996150000E818 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
